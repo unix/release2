@@ -6,7 +6,13 @@ export enum CHANGE_TYPES {
   fix = 'patch',
 }
 
-export const CHANGE_INFOS = {
+export interface ChangeInfo {
+  name: string,
+  pluralName: string,
+  description: string,
+}
+
+export const CHANGE_INFOS: { [key: string]: ChangeInfo } = {
   [CHANGE_TYPES.major]: {
     name: 'Major Change',
     pluralName: 'Major Changes',
