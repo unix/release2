@@ -23,7 +23,7 @@ release2 will help you automatically generate a release, follow [SemVer](https:/
 
 <br/>
 
-- support release type:
+**support release types**:
 
 `rl major`: incompatible API change.
 
