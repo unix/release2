@@ -1,24 +1,32 @@
 {
-  "name": "release2",
-  "version": "1.0.1-alpha.8",
+  "name": "rl2",
+  "version": "0.1.0",
   "main": "index.js",
   "author": "WittBulter <nanazuimeng123@gmail.com>",
   "license": "MIT",
+  "preferGlobal": true,
   "scripts": {
     "start": "bash ./scripts/dev.sh",
     "lint": "tslint -c tslint.yml -p tsconfig.json",
     "build": "ncc build ./src/index.ts && cp bin.js ./dist/"
   },
   "bin": {
+    "rl": "./dist/bin.js",
     "release": "./dist/bin.js"
   },
+  "files": [
+    "dist"
+  ],
   "devDependencies": {
     "@haifeng-fe/tslint-config": "^1.0.0",
+    "@types/chalk": "^2.2.0",
     "@types/node": "^11.11.0",
     "@types/ora": "^3.2.0",
     "@types/parse-git-config": "^3.0.0",
     "@types/semver": "^5.5.0",
     "arg": "^4.1.0",
+    "chalk": "^2.4.2",
+    "ncc": "^0.3.6",
     "ora": "^3.2.0",
     "parse-git-config": "^3.0.0",
     "semver": "^5.6.0",

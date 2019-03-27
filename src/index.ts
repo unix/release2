@@ -1,4 +1,5 @@
 import arg from 'arg'
+import * as options from './options'
 import * as print from './utils/print'
 import * as commander from './utils/commander'
 import * as events from './utils/events'
@@ -8,11 +9,17 @@ const args = arg({
   '--help': Boolean,
   '--version': Boolean,
   '-h': '--help',
+  '-v': '--version',
 })
+
 const type = args._[0]
 const suffix = args._[1] || null
 
 ;(async() => {
+  // options
+  if (args['--help']) return options.help()
+  if (args['--version']) return options.version()
+  
   if (!CHANGE_TYPES[type]) return print.mainTips()
   
   // const result = commander.git('git status -z')
