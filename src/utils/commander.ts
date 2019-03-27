@@ -62,7 +62,7 @@ export const commitAll = (version: string, message?: string) => {
   
   try {
     spinner.start(`${version} released. pushing to "${origin}/${branch}".`)
-    // git(`git push ${origin} ${branch} && git push -u ${origin} ${branch} --tags`)
+    git(`git push ${origin} ${branch} && git push -u ${origin} ${branch} --tags`)
   } catch (err) {
     spinner.fail()
     print.error(err)
