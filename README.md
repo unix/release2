@@ -54,7 +54,7 @@ npx rl2 <type>
 
 ### hooks
 
-release will look for a file named `release.js` in the root directory of your project.
+`rl2` will look for a file named `release.js` in the root directory of your project.
 
 ```js
 // release.js
