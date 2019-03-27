@@ -49,6 +49,7 @@ export const commitAll = (version: string, message?: string) => {
     spinner.fail()
     print.error(err)
   }
+  spinner.succeed(true)
 
   try {
     spinner.start('committed. tagging...')
@@ -57,6 +58,7 @@ export const commitAll = (version: string, message?: string) => {
     spinner.fail()
     print.error(err)
   }
+  spinner.succeed(true)
   
   try {
     spinner.start(`${version} released. pushing to "${origin}/${branch}".`)
