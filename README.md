@@ -47,6 +47,9 @@ release2 will help you automatically generate a release, follow [SemVer](https:/
 npx rl2 <type>
 ```
 
+**installation time is less than 1 sec by npx.**
+&nbsp;&nbsp;![npx-demo](npx-demo.png)
+
 <br/>
 
 ### hooks
