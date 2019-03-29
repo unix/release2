@@ -7,12 +7,14 @@ export const help = () => {
   Object.keys(CHANGE_INFOS).forEach(name => {
     console.log(`${chalk.cyan(name)} \<command\> -- ${CHANGE_INFOS[name].description}`)
   })
+  console.log(`${chalk.cyan('-p, --push')} \<option\> -- push to remote`)
   console.log('')
 }
 
 export const version = () => {
   console.log(`v${pkg.version}\n`)
 }
+
 
 
 

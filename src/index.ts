@@ -8,8 +8,10 @@ import { CHANGE_TYPES } from './constants/configs'
 const args = arg({
   '--help': Boolean,
   '--version': Boolean,
+  '--push': Boolean,
   '-h': '--help',
   '-v': '--version',
+  '-p': '--push',
 })
 
 const type = args._[0]
@@ -17,8 +19,13 @@ const suffix = args._[1] || null
 
 ;(async() => {
   // options
+  let push = false
   if (args['--help']) return options.help()
   if (args['--version']) return options.version()
+  if (args['--push']) {
+    push = true
+    if (!type) return commander.pushAll()
+  }
   
   if (!CHANGE_TYPES[type]) return print.mainTips()
   
@@ -29,7 +36,7 @@ const suffix = args._[1] || null
   
   const tagMessage = await events.updateHooks(nextVersion, type)
   
-  commander.commitAll(nextVersion, tagMessage)
+  commander.commitAll(nextVersion, tagMessage, push)
   
 })()
 

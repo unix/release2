@@ -36,7 +36,24 @@ const getBranch = (): string | void => {
   return result[1]
 }
 
-export const commitAll = (version: string, message?: string) => {
+export const pushAll = () => {
+  const config = parse.sync()
+  const origin = getOrigin(config)
+  const branch = getBranch()
+  try {
+    spinner.start(`pushing everything to "${origin}/${branch}".`)
+    git(`git push ${origin} ${branch} && git push -u ${origin} ${branch} --tags`)
+  } catch (err) {
+    spinner.fail()
+    print.error(err)
+  }
+  spinner.succeed(true)
+  
+  spinner.start(`pushed everything to "${origin}/${branch}".`)
+  spinner.succeed()
+}
+
+export const commitAll = (version: string, message?: string, push?: boolean) => {
   spinner.start('updated. committing...')
   const config = parse.sync()
   const origin = getOrigin(config)
@@ -59,6 +76,13 @@ export const commitAll = (version: string, message?: string) => {
     print.error(err)
   }
   spinner.succeed(true)
+  
+  if (!push) {
+    spinner.start(`${version} released.`)
+    spinner.succeed()
+    console.log('use "--push, -p" to push all commits.')
+    return process.exit(1)
+  }
   
   try {
     spinner.start(`${version} released. pushing to "${origin}/${branch}".`)
