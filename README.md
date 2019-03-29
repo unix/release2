@@ -35,6 +35,8 @@ release2 will help you automatically generate a release, follow [SemVer](https:/
 
 `rl pre <type>`: custom pre-release.
 
+`rl -p`: push everything to remote.
+
 
 <br/>
 
