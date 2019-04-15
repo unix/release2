@@ -17,14 +17,23 @@ export const git = (command: string): string | void => {
   }
 }
 
-const getOrigin = (config: parse.Config): string => {
+export const getOrigin = (config: parse.Config): string => {
   if (config.hasOwnProperty('remote "origin"')) return 'origin'
   const key = Object.keys(config).find(name => /^remote /.test(name))
+  if (!key || !key.match) print.exit(print.notFoundGitRemote)
+  
   const result = key.match(/"(\w+)"/)
-  if (!result || !result[1]) {
-    print.exit(print.cantParseGitConfig)
-  }
+  if (!result || !result[1]) print.exit(print.cantParseGitConfig)
   return result[1]
+}
+
+export const checkGitOrigin = (): void => {
+  try {
+    const config = parse.sync()
+    getOrigin(config)
+  } catch (e) {
+    print.exit(print.notFoundGitRemote)
+  }
 }
 
 const getBranch = (): string | void => {

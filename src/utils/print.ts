@@ -19,6 +19,11 @@ export const notGitRepository = () => {
   console.log(`${prefix}: Directory is not a Git repository.`)
 }
 
+export const notFoundGitRemote = () => {
+  console.log(`${prefix}: not found Git Remote.`)
+  console.log('try run [git remote add <url>] fix it.')
+}
+
 export const error = (text: string) => {
   console.log(prefix)
   console.log(`error: ${text}`)

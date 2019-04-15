@@ -29,6 +29,8 @@ const suffix = args._[1] || null
   
   if (!CHANGE_TYPES[type]) return print.mainTips()
   
+  commander.checkGitOrigin()
+  
   // const result = commander.git('git status -z')
   // if (result.toString()) return print.hasUnstagedChanges()
   
