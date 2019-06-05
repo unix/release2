@@ -1,5 +1,8 @@
 ## rl2, release v2
 
+## Archived
+## Now you have a better choice: [done](https://github.com/WittBulter/done)
+
 [release](https://github.com/zeit/release) is a great library, but it doesn't seem to be updated at the moment. **release2** solved some of the legacy issues.
 
 <br/>
